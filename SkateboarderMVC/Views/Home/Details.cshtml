@@ -1,0 +1,63 @@
+﻿@model SkateboarderMVC.Models.Skateboarder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<h4>Skateboarder</h4>
+<hr/>
+<div class="col-md-6">
+    <dl class="dl-horizontal">
+        <dt>Image </dt>
+        <dd><img src="@Url.Content(Model.ImageUrl)" height="100" /></dd>
+        
+        <dt>@Html.DisplayNameFor(d => d.Name)</dt>
+        <dd>@Html.DisplayFor(m => m.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.HomeTown)</dt>
+        <dd>@Html.DisplayFor(m => m.HomeTown)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.DateOfBirth)</dt>
+        <dd>@Html.DisplayFor(m => m.DateOfBirth)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.Status)</dt>
+        <dd>@Html.DisplayFor(m => m.Status)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.Style)</dt>
+        <dd>@Html.DisplayFor(m => m.Style)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.Stance)</dt>
+        <dd>@Html.DisplayFor(m => m.Stance)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.BoardSponsor)</dt>
+        <dd>@Html.DisplayFor(m => m.BoardSponsor)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.WheelSponsor)</dt>
+        <dd>@Html.DisplayFor(m => m.WheelSponsor)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.Likes)</dt>
+        <dd>@Html.DisplayFor(m => m.Likes)</dd>
+
+        <dt>@Html.DisplayNameFor(d => d.Dislikes)</dt>
+        <dd>@Html.DisplayFor(m => m.Dislikes)</dd>
+
+
+
+        @*<dt>@Html.DisplayNameFor(d => d.ImageUrl)</dt>
+            <dd>@Html.DisplayFor(m => m.ImageUrl)</dd>
+
+            <dt>@Html.DisplayNameFor(d => d.VideoHighlightUrl)</dt>
+            <dd>@Html.DisplayFor(m => m.VideoHighlightUrl)</dd>*@
+    </dl>
+</div>
+
+<div class="col-md-6">
+
+    <iframe width="560" height="315" src=@Html.DisplayFor(m => m.VideoHighlightUrl) frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+<p>
+    @Html.ActionLink("Edit Record", "Edit", new { id=Model.Id})  | 
+    @Html.ActionLink("Back to List", "Index")
+</p>

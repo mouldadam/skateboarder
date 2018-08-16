@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SkateboarderMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Skateboarder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="HomeTown" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime2" Precision="7" />
+          <Property Name="Stance" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar(max)" Nullable="false" />
+          <Property Name="Style" Type="varchar(max)" Nullable="false" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="VideoHighlightUrl" Type="varchar(max)" />
+          <Property Name="Likes" Type="int" Nullable="false" />
+          <Property Name="Dislikes" Type="int" Nullable="false" />
+          <Property Name="WheelSponsor" Type="varchar(max)" />
+          <Property Name="BoardSponsor" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="SkateboarderMVCModelStoreContainer">
+          <EntitySet Name="Skateboarder" EntityType="Self.Skateboarder" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkateboarderMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Skateboarder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HomeTown" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
+          <Property Name="Stance" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Style" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoHighlightUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Likes" Type="Int32" Nullable="false" />
+          <Property Name="Dislikes" Type="Int32" Nullable="false" />
+          <Property Name="WheelSponsor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BoardSponsor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="SkateboarderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Skateboarders" EntityType="Self.Skateboarder" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SkateboarderMVCModelStoreContainer" CdmEntityContainer="SkateboarderEntities">
+          <EntitySetMapping Name="Skateboarders">
+            <EntityTypeMapping TypeName="SkateboarderMVCModel.Skateboarder">
+              <MappingFragment StoreEntitySet="Skateboarder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HomeTown" ColumnName="HomeTown" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Stance" ColumnName="Stance" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="VideoHighlightUrl" ColumnName="VideoHighlightUrl" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="Dislikes" ColumnName="Dislikes" />
+                <ScalarProperty Name="WheelSponsor" ColumnName="WheelSponsor" />
+                <ScalarProperty Name="BoardSponsor" ColumnName="BoardSponsor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

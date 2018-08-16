@@ -1,0 +1,173 @@
+﻿
+
+
+
+@model IEnumerable<SkateboarderMVC.Models.Skateboarder>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="text-center header">
+    <p>Lookup your favourite skateboarders!</p>
+</div>
+<div class="text-center">
+    @*link for creating a new recorder
+        the first parameter is the text for the link and the second is the action method it goes for*@
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            <Button class="btn btn-default inline ">@Html.ActionLink("Create new skateboarder", "Create", "Home", null, new { @class = "createbtn" }) &nbsp; <i class="fas fa-plus"></i></Button>
+            Style: @Html.DropDownList("skateboarderStyle", "All")
+            Name: @Html.TextBox("SearchString")
+            <input class="btn btn-default inline " type="submit" value="Filter" />
+            <Button class="btn btn-default inline ">@Html.ActionLink("Clear Filter", "Index", "Home", null, new { @class = "createbtn" })</Button>
+            <a class="btn btn-default" href="/?sortOrder=@ViewBag.NameSortParm"> Sort by Name</a>
+            <a class="btn btn-default" href="/?sortOrder=@ViewBag.LikeSortParm"> Sort by Likes</a>
+
+        </p>
+    }
+</div>
+
+<table class="table indexTable tableIndex">
+    @*column heading for the table*@
+    <tr style="background-color:black; color:white">
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeTown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Style)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stance)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.BoardSponsor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WheelSponsor)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Likes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dislikes)
+        </th>
+
+        <th>
+            Action Buttons
+        </th>
+    </tr>
+    @{  var rowColor = "white";
+        var rowFontColor = "black";
+        var rowIconColor = "black"; }
+    @foreach (var item in Model)
+    {
+
+        <tr style="background-color:@rowColor; color:@rowFontColor;">
+            <td>
+                <img class="image" src="@Url.Content(item.ImageUrl)" height="100" />
+            </td>
+            <td><a id="inheritColor"href="@Url.Action("Details", new { id = item.Id })">@Html.DisplayFor(m => item.Name)</a> </td>
+            <td> @Html.DisplayFor(m => item.HomeTown)</td>
+            <td>
+                @*@Html.DisplayFor(m => item.DateOfBirth)*@
+                @if (item.DateOfBirth.HasValue)
+                {
+                    @item.DateOfBirth.Value.ToString("dd/MM/yyyy")
+                }
+            </td>
+            <td> @Html.DisplayFor(m => item.Status)</td>
+            <td> @Html.DisplayFor(m => item.Style)</td>
+            <td> @Html.DisplayFor(m => item.Stance)</td>
+            @*<td> @Html.DisplayFor(m => item.BoardSponsor)</td>
+                <td> @Html.DisplayFor(m => item.WheelSponsor)</td>*@
+
+            <td>
+                @*@using (Html.BeginForm("Likes", "Home", new { id = item.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.DisplayFor(m => item.Likes)
+
+                            <button type="submit" class="btn btn-default actionLike">
+                                <i class="fas fa-thumbs-up"></i>
+                            </button>
+                    }*@
+                @{
+                    string idlike = string.Concat(item.Id.ToString(), "Like");
+                }
+                <fieldset class="inline">
+                    <div id="@(idlike)" class="inline">
+                        @{ Html.RenderPartial("likeView", item);}
+                    </div>
+
+                </fieldset>
+                @using (Ajax.BeginForm("incrementLike", "Home", new { id = item.Id }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = idlike }, new { @class = "inline" }))
+                {
+
+                    <button type="submit" class="btn btn-default actionLike">
+                        <i class="fas fa-thumbs-up"></i>
+                    </button>
+                }
+
+            </td>
+            <td>
+                @{
+                    string iddislike = string.Concat(item.Id.ToString(), "Dislike");
+                }
+                <fieldset class="inline">
+                    <div id="@(iddislike)" class="inline">
+                        @{ Html.RenderPartial("dislikeView", item);}
+                    </div>
+
+                </fieldset>
+
+                @using (Ajax.BeginForm("incrementDislike", "Home", new { id = item.Id }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = iddislike }, new { @class = "inline" }))
+                {
+
+                    <button type="submit" class="btn btn-default actionDislike">
+                        <i class="fas fa-thumbs-down"></i>
+                    </button>
+                }
+
+
+            </td>
+            @*<td> @Html.DisplayFor(m => item.ImageUrl)</td>*@
+
+
+            <td>
+                <a href="@Url.Action( "Details",new { id = item.Id } )"><i  style="background-color:@rowIconColor;" class="fas fa-info-circle actionIcon"></i></a>
+                <a href="@Url.Action( "Edit",new { id = item.Id } )"><i style="background-color:@rowIconColor" class="fas fa-edit actionIcon"></i></a>
+                <a  href="@Url.Action( "Delete",new { id = item.Id } )"> <i  style="background-color:@rowIconColor;" class="fas fa-trash actionIcon"></i></a>
+
+                @*@Html.ActionLink("Edit Record", "Edit", new { id = item.Id })
+                    @Html.ActionLink("Details of Record ", "Details", new { id = item.Id })
+                    @Html.ActionLink("Delete Record ", "Delete", new { id = item.Id })*@
+
+            </td>
+        </tr>
+                                if (@rowColor.Equals("black"))
+                                {
+                                    rowColor = "white";
+                                    rowFontColor = "black";
+                                    rowIconColor = "black";
+                                }
+                                else
+                                {
+                                    rowColor = "black";
+                                    rowFontColor = "white";
+                                    rowIconColor = "white";
+                                }
+                            }
+</table>

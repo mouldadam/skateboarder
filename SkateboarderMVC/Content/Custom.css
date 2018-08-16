@@ -1,0 +1,78 @@
+﻿
+
+.indexTable td{
+    vertical-align:middle!important;
+
+}
+.indexTable th,.indexTable td{
+  text-align:center !important;
+
+}
+
+.actionIcon{
+    font-size: 30px !important;
+        background-color: #0000ad;
+    border-radius: 50%;
+    padding: 10px;
+    color:#b7b7b7;
+}
+.actionIcon:hover{
+    color:#636161;
+}
+
+fas{
+  font-size: 30px !important;
+}
+
+.actionLike{
+    background-color:#00ff00;
+}
+.actionLike:hover,.actionLike:focus,.actionLike:active{
+    background-color:#00a400 !important;
+}
+
+.actionDislike{
+    background-color:red;
+}
+.actionDislike:hover,.actionDislike:focus,.actionDislike:active{
+    background-color:#b10000 !important;
+}
+
+.image{
+    width: 150px;
+    height: auto;
+}
+
+.createbtn{
+    text-decoration:none;
+    color:black;
+}
+.createbtn:hover{
+    color:black;
+    text-decoration:none;
+}
+
+.inline{
+    display:inline;
+}
+
+body{
+    background:linear-gradient(grey,white);
+    padding-top:25px;
+}
+
+@font-face {
+    font-family: blackops;
+    src: url('../fonts/blackopsone-regular.woff') format('woff'), 
+        url('../fonts/BlackOpsOne-Regular.ttf')  format('truetype');
+}
+
+.header{
+    font-family:blackops;
+    font-size:43px !important;
+}
+#inheritColor{
+    color:inherit;
+    text-decoration-line:underline;
+}
+

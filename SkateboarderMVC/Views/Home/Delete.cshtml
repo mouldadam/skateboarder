@@ -1,0 +1,64 @@
+﻿@model SkateboarderMVC.Models.Skateboarder
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<h3> Are you sure you want to delete this skateboarder profile?</h3>
+<h4>Skateboarder</h4>
+<hr/>
+<dl class="dl-horizontal">
+    <dt>Image </dt>
+    <dd><img src="@Url.Content(Model.ImageUrl)" height="100" /></dd>
+
+    <dt>@Html.DisplayNameFor(d => d.Name)</dt>
+    <dd>@Html.DisplayFor(m => m.Name)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.HomeTown)</dt>
+    <dd>@Html.DisplayFor(m => m.HomeTown)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.DateOfBirth)</dt>
+    <dd>@Html.DisplayFor(m => m.DateOfBirth)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.Status)</dt>
+    <dd>@Html.DisplayFor(m => m.Status)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.Style)</dt>
+    <dd>@Html.DisplayFor(m => m.Style)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.Stance)</dt>
+    <dd>@Html.DisplayFor(m => m.Stance)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.BoardSponsor)</dt>
+    <dd>@Html.DisplayFor(m => m.BoardSponsor)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.WheelSponsor)</dt>
+    <dd>@Html.DisplayFor(m => m.WheelSponsor)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.Likes)</dt>
+    <dd>@Html.DisplayFor(m => m.Likes)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.Dislikes)</dt>
+    <dd>@Html.DisplayFor(m => m.Dislikes)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.ImageUrl)</dt>
+    <dd>@Html.DisplayFor(m => m.ImageUrl)</dd>
+
+    <dt>@Html.DisplayNameFor(d => d.VideoHighlightUrl)</dt>
+    <dd>@Html.DisplayFor(m => m.VideoHighlightUrl)</dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    // help protect against cross  site request forgery attack
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-11">
+        <input type="submit" class="btn btn-default" value="Delete Record" />
+    </div>
+    </div>
+    
+}
+@Html.ActionLink("Back ot List","Index")
+
+

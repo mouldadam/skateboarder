@@ -1,0 +1,117 @@
+﻿@model SkateboarderMVC.Models.Skateboarder
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    // help protect against cross  site request forgery attack
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Skateboarder</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(d => d.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.HomeTown, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.HomeTown, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.HomeTown, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(d => d.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.Status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Style, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.Style, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Style, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Stance, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.Stance, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Stance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.BoardSponsor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.BoardSponsor, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.WheelSponsor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.WheelSponsor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.WheelSponsor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Stance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.VideoHighlightUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.VideoHighlightUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.VideoHighlightUrl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Likes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.Likes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Likes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(d => d.Dislikes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class-"col-md-10">
+                @Html.EditorFor(d => d.Dislikes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(d => d.Dislikes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create skateboarder" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+@Html.ActionLink("Back to list", "index")
+
+
+
+
